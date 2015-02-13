@@ -12,68 +12,98 @@ $(document).ready(
 		var num2 = 0;
 		var total = 0;
 		
+		var getNumber = function(){
+			num1 = parseInt($("#num1").val());
+			num2 = parseInt($("#num2").val());
+		};
+		
+		var showNumber = function(){
+			$('#display').html(total);
+			$('#display').animate({
+				'bottom':'200px'
+			});
+		};
+		
 		console.log("test");
 		
 		var add = function(){
-			num1 = parseInt($("#num1").val());
-			num2 = parseInt($("#num2").val());
+			getNumber();
 			total = num1 + num2;
 		};
 		
 		var subt = function(){
-			num1 = parseInt($("#num1").val());
-			num2 = parseInt($("#num2").val());
+			getNumber();
 			total = num1 - num2;
 		};
 		
 		var mult = function(){
-			num1 = parseInt($("#num1").val());
-			num2 = parseInt($("#num2").val());
+			getNumber();
 			total = num1 * num2;
 		};
 		
 		var divi = function(){
-			num1 = parseInt($("#num1").val());
-			num2 = parseInt($("#num2").val());
+			getNumber();
 			total = num1 / num2;
 		};
 		
+		$('#topleft').click(
+			function(){
+			add();
+			}
+		);
 		
 		$("#add").click(
 			function(){
 			add();
-			$('#display').html(total);
-		
 			}
 		 );
 		
 		$("#subt").click(
 			function(){
 			subt();
-			$('#display').html(total);
-		
 			}
 		 );
 		 
 		 $("#mult").click(
 			function(){
 			mult();
-			$('#display').html(total);
-		
 			}
 		 );
 		 
 		 $("#divi").click(
 			function(){
 			divi();
-			$('#display').html(total);
-		
 			}
 		 );
 		
+		$("#calc").click(
+			function(){
+			showNumber();
+		
+			}
+		 );
+		 
 	   }
 	);
 </script>
+<style>
+#topleft{
+	position:fixed;
+	top:0;
+	left:0;
+	
+}
+
+input{
+	position:relative;
+	height:50px;
+	font-size:15pt;
+	z-index:1;
+}
+#display{
+	
+}
+</style>
 <body>
 	<input id="num1" type="text" placeholder="1st #" />
 	<button id='add'>+</button>
@@ -82,6 +112,11 @@ $(document).ready(
 	<button id='divi'>/</button>
 	<input id="num2" type="text" placeholder="2nd #" />
 	<button id='calc'>Calculate</button>
+	<div id='topleft'></div>
+	<div id='topright'></div>
+	<div id='botleft'></div>
+	<div id='botright'></div>
+	
 	<div id='display'>
 	</div>
 	
